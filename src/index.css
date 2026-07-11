@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes riseHeart {
+    0% {
+        transform: translateY(0) scale(1) rotate(-10deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.8;
+    }
+
+    85% {
+        opacity: 0.4;
+    }
+
+    100% {
+        transform: translateY(-105vh) scale(0.4) rotate(15deg);
+        opacity: 0;
+    }
+}
+
+@keyframes clickHeart {
+    0% {
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 1;
+    }
+
+    60% {
+        transform: translate(-50%, -120%) scale(1.4);
+        opacity: 0.9;
+    }
+
+    100% {
+        transform: translate(-50%, -200%) scale(0.8);
+        opacity: 0;
+    }
+}
+
+.animate-rise-heart {
+    animation: riseHeart linear infinite;
+    will-change: transform, opacity;
+}
+
+.animate-click-heart {
+    animation: clickHeart 1.2s ease-out forwards;
+    will-change: transform, opacity;
+}
