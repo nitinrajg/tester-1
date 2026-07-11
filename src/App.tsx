@@ -1,4 +1,3 @@
-
 import { useState, useRef, useMemo, useCallback } from "react";
 
 type Stage = "initial" | "sorry" | "think" | "final_chance" | "running" | "love";
@@ -211,8 +210,9 @@ export default function App() {
 
                         <button
                             ref={noRef}
-                            onClick={handleNo}
+                            onClick={stage === "running" ? (e) => e.preventDefault() : handleNo}
                             onMouseEnter={stage === "running" ? moveNoButton : undefined}
+                            onTouchStart={stage === "running" ? (e) => { e.preventDefault(); moveNoButton(); } : undefined}
                             className="w-36 h-11 rounded-full font-semibold text-base border-2 transition-all duration-200 cursor-pointer active:scale-95"
                             style={{
                                 fontFamily: "'Poppins', sans-serif",
@@ -220,6 +220,7 @@ export default function App() {
                                 color: "#d63384",
                                 border: "2px solid #ffb3c1",
                                 boxShadow: "0 4px 14px rgba(255,100,150,0.15)",
+                                touchAction: "none",
                             }}
                         >
                             {current.noLabel}
